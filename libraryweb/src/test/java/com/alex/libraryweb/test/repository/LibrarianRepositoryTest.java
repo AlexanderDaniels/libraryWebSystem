@@ -26,7 +26,7 @@ import org.testng.annotations.Test;
 public class LibrarianRepositoryTest {
     
     public static ApplicationContext ctx;
-    private Long id;
+    private Long id = 5L;
     
     private LibrarianRepository repo;
     
@@ -57,38 +57,35 @@ public class LibrarianRepositoryTest {
         Assert.assertNotNull(librarian);
     }
     
-    @Test(dependsOnMethods = "createPerson")
+    @Test(dependsOnMethods = "createLibrarian")
      public void readLibrarian(){
          repo = ctx.getBean(LibrarianRepository.class);
          Librarian librarian = repo.findOne(id);
-         Assert.assertEquals(librarian.getFirstName(), "Alexander");
-         
+         Assert.assertEquals(librarian.getFirstName(), "Alexander");         
      }
      
-    @Test(dependsOnMethods = "readPerson")
+    @Test(dependsOnMethods = "readLibrarian")
      private void updateLibrarian(){
          repo = ctx.getBean(LibrarianRepository.class);
          Librarian librarian = repo.findOne(id);
-         //librarian.
-         repo.save(librarian);
+         
+         Librarian newLibrarian = new Librarian.LibrarianBuilder(id).librarian(librarian).firstName("Alex").build();
+         repo.save(newLibrarian);
          
          Librarian updateLibrarian = repo.findOne(id);
-         Assert.assertEquals(updateLibrarian.getFirstName(), "Boniface");
-         
+         Assert.assertEquals(updateLibrarian.getFirstName(), "Alex");       
      }
      
-     @Test(dependsOnMethods = "updatePerson")
-     private void deletePerson(){
+    @Test(dependsOnMethods = "updateLibrarian")
+     private void deleteLibrarian(){
          repo = ctx.getBean(LibrarianRepository.class);
-         Librarian person = repo.findOne(id);
-         repo.delete(person);
+         Librarian librarian = repo.findOne(id);
+         repo.delete(librarian);
          
-         Librarian deletedPerson = repo.findOne(id);
+         Librarian deletedLibrarian = repo.findOne(id);
          
-         Assert.assertNull(deletedPerson);
-         
-         
-     } 
+         Assert.assertNull(deletedLibrarian);        
+     }
             
 
     @BeforeClass
