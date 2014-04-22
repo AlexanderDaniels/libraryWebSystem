@@ -18,31 +18,41 @@ import javax.persistence.Id;
  * @author Alex
  */
 @Entity
-public class Librarian implements Serializable {
+public class LibrarianMember implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String membershipNum;
     private String firstName;
     private String lastName;
     
     @Embedded
     private Contact contact;
 
-    public Librarian() {
-    }
+    public LibrarianMember() {
+    }  
 
-    public Librarian(LibrarianBuilder builder) {
+    public LibrarianMember(LibrarianMemberBuilder builder) {
         this.id = builder.id;
+        this.membershipNum = builder.membershipNum;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.contact = builder.contact;
-    }
-    
+    }    
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
+    public String getMembershipNum() {
+        return membershipNum;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }    
+    
     public Long getId() {
         return id;
     }
@@ -54,48 +64,53 @@ public class Librarian implements Serializable {
     public String getLastName() {
         return lastName;
     }
-
-    public Contact getContact() {
-        return contact;
-    }
-
-    public static class LibrarianBuilder{
+    
+    
+    
+    public static class LibrarianMemberBuilder{
         private Long id;
+        private String membershipNum;
         private String firstName;
         private String lastName;
     
         @Embedded
         private Contact contact;
 
-        public LibrarianBuilder(Long id) {
+        public LibrarianMemberBuilder(Long id) {
             this.id = id;
         }
         
-        public LibrarianBuilder firstName(String firstName){
+        public LibrarianMemberBuilder membershipNum(String membershipNum){
+            this.membershipNum = membershipNum;
+            return this;
+        }
+        
+        public LibrarianMemberBuilder firstName(String firstName){
             this.firstName = firstName;
             return this;
         }
         
-        public LibrarianBuilder lastName(String lastName){
+        public LibrarianMemberBuilder lastName(String lastName){
             this.lastName = lastName;
             return this;
         }
         
-        public LibrarianBuilder contact(Contact contact){
+        public LibrarianMemberBuilder contact(Contact contact){
             this.contact = contact;
             return this;
         }
         
-        public LibrarianBuilder librarian(Librarian lib){
-            id = lib.getId();
-            firstName = lib.getFirstName();
-            lastName = lib.getLastName();
-            contact = lib.getContact();
+        public LibrarianMemberBuilder librarianMember(LibrarianMember libMember){
+            id = libMember.getId();
+            membershipNum = libMember.getMembershipNum();
+            firstName = libMember.getFirstName();
+            lastName = libMember.getLastName();
+            contact = libMember.getContact();
             return this;
         }
         
-        public Librarian build(){
-            return new Librarian(this);
+        public LibrarianMember build(){
+            return new LibrarianMember(this);
         }
     }
 
@@ -109,10 +124,10 @@ public class Librarian implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Librarian)) {
+        if (!(object instanceof LibrarianMember)) {
             return false;
         }
-        Librarian other = (Librarian) object;
+        LibrarianMember other = (LibrarianMember) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -121,7 +136,7 @@ public class Librarian implements Serializable {
 
     @Override
     public String toString() {
-        return "com.tp.alex.libraryweb.domain.Librarian[ id=" + id + " ]";
+        return "com.alex.libraryweb.domain.LibrarianMember[ id=" + id + " ]";
     }
     
 }
