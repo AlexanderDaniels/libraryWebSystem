@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.tp.alex.libraryweb.domain;
+package com.alex.libraryweb.domain;
 
 import java.io.Serializable;
 import javax.persistence.Embeddable;
@@ -19,6 +19,9 @@ public class Contact implements Serializable{
     private String landline;
     private String address;
     private String cell;
+
+    public Contact() {
+    }
 
     public Contact(ContactBuilder builder) {
         this.landline = builder.landline;

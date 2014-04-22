@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.tp.alex.libraryweb.repository;
+package com.alex.libraryweb.repository;
 
-import com.tp.alex.libraryweb.domain.Librarian;
+import com.alex.libraryweb.domain.Librarian;
 import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
 

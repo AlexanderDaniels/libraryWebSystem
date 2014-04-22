@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.tp.alex.libraryweb.domain;
+package com.alex.libraryweb.domain;
 
 import java.io.Serializable;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,6 +28,9 @@ public class Librarian implements Serializable {
     
     @Embedded
     private Contact contact;
+
+    public Librarian() {
+    }
 
     public Librarian(LibrarianBuilder builder) {
         this.id = builder.id;

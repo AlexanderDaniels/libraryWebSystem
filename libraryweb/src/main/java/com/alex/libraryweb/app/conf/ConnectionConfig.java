@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package com.tp.alex.libraryweb.app.conf;
+package com.alex.libraryweb.app.conf;
 
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
@@ -25,7 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.tp.alex.libraryweb.respository")
+@EnableJpaRepositories(basePackages = "com.alex.libraryweb")
 public class ConnectionConfig {
     
     @Bean
@@ -40,13 +39,13 @@ public class ConnectionConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-        DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
-            LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
-            lef.setDataSource(dataSource);
-            lef.setJpaVendorAdapter(jpaVendorAdapter);
-            lef.setPackagesToScan("com.tp.alex.libraryweb.domain");
-            return lef;
-        }
+            DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
+        LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
+        lef.setDataSource(dataSource);
+        lef.setJpaVendorAdapter(jpaVendorAdapter);
+        lef.setPackagesToScan("com.alex.libraryweb.domain");
+        return lef;
+    }
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
