@@ -18,7 +18,7 @@ import javax.persistence.Id;
  * @author Alex
  */
 @Entity
-public class LibrarianMember implements Serializable {
+public class LibraryMember implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,10 +30,10 @@ public class LibrarianMember implements Serializable {
     @Embedded
     private Contact contact;
 
-    public LibrarianMember() {
+    public LibraryMember() {
     }  
 
-    public LibrarianMember(LibrarianMemberBuilder builder) {
+    public LibraryMember(LibraryMemberBuilder builder) {
         this.id = builder.id;
         this.membershipNum = builder.membershipNum;
         this.firstName = builder.firstName;
@@ -67,7 +67,9 @@ public class LibrarianMember implements Serializable {
     
     
     
-    public static class LibrarianMemberBuilder{
+    public static class LibraryMemberBuilder{
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
         private String membershipNum;
         private String firstName;
@@ -76,31 +78,31 @@ public class LibrarianMember implements Serializable {
         @Embedded
         private Contact contact;
 
-        public LibrarianMemberBuilder(Long id) {
+        public LibraryMemberBuilder(Long id) {
             this.id = id;
         }
         
-        public LibrarianMemberBuilder membershipNum(String membershipNum){
+        public LibraryMemberBuilder membershipNum(String membershipNum){
             this.membershipNum = membershipNum;
             return this;
         }
         
-        public LibrarianMemberBuilder firstName(String firstName){
+        public LibraryMemberBuilder firstName(String firstName){
             this.firstName = firstName;
             return this;
         }
         
-        public LibrarianMemberBuilder lastName(String lastName){
+        public LibraryMemberBuilder lastName(String lastName){
             this.lastName = lastName;
             return this;
         }
         
-        public LibrarianMemberBuilder contact(Contact contact){
+        public LibraryMemberBuilder contact(Contact contact){
             this.contact = contact;
             return this;
         }
         
-        public LibrarianMemberBuilder librarianMember(LibrarianMember libMember){
+        public LibraryMemberBuilder librarianMember(LibraryMember libMember){
             id = libMember.getId();
             membershipNum = libMember.getMembershipNum();
             firstName = libMember.getFirstName();
@@ -109,8 +111,8 @@ public class LibrarianMember implements Serializable {
             return this;
         }
         
-        public LibrarianMember build(){
-            return new LibrarianMember(this);
+        public LibraryMember build(){
+            return new LibraryMember(this);
         }
     }
 
@@ -124,10 +126,10 @@ public class LibrarianMember implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LibrarianMember)) {
+        if (!(object instanceof LibraryMember)) {
             return false;
         }
-        LibrarianMember other = (LibrarianMember) object;
+        LibraryMember other = (LibraryMember) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

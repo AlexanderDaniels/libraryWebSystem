@@ -6,7 +6,7 @@
 
 package com.alex.libraryweb.repository;
 
-import com.alex.libraryweb.domain.LibrarianMember;
+import com.alex.libraryweb.domain.LibraryMember;
 import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,6 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Alex
  */
-public interface LibrarianMemberRepository extends JpaRepository<LibrarianMember, Long>{
+public interface LibraryMemberRepository extends JpaRepository<LibraryMember,Long>{
     
 }

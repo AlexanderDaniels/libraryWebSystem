@@ -26,7 +26,7 @@ import org.testng.annotations.Test;
 public class LibrarianRepositoryTest {
     
     public static ApplicationContext ctx;
-    private Long id = 5L;
+    private final Long id = 7L;
     
     private LibrarianRepository repo;
     
