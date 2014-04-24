@@ -29,7 +29,7 @@ import org.testng.annotations.Test;
 public class AutherRepositoryTest {
     
     public static ApplicationContext ctx;
-    private final Long id = 2L;
+    private final Long id = 4L;
     
     private AuthorRepository repo;
     
