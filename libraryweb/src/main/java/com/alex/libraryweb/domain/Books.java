@@ -71,7 +71,7 @@ public class Books implements Serializable {
             return this;
         }
         
-        public BooksBuilder book(Books books){
+        public BooksBuilder books(Books books){
             id = books.getId();
             bookName = books.getBookName();
             isbnNumber = books.getIsbnNumber();
