@@ -71,7 +71,7 @@ public class ReturnBooks implements Serializable {
             return this;
         }
         
-        public ReturnBooksBuilder returnBook(ReturnBooks returnBook){
+        public ReturnBooksBuilder returnBooks(ReturnBooks returnBook){
             id = returnBook.getId();
             bookName = returnBook.getBookName();
             isbnNumber = returnBook.getIsbnNumber();

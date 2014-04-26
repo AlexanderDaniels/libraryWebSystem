@@ -14,6 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Alex
  */
-public interface PayBillRpeository extends JpaRepository<PayBill, Long>{
+public interface PayBillRepository extends JpaRepository<PayBill, Long>{
     
 }
